@@ -6,6 +6,7 @@ const Supervisor = require('../models/supervisor.model');
 const Teacher = require('../models/teacher.model');
 const Alumn = require('../models/alumn.model');
 const Report = require('../models/report.model');
+const Qualification = require('../models/qualification.model')
 const jwt = require('../services/jwt');
 const {dataObligatory, encryptPassword, dencryptPassword} = require('../utils/validate');
 
@@ -564,6 +565,7 @@ exports.deleteAlumn = async(req, res)=>{
         const idAlumn = req.params.idAlumn;
         const alumn = await Alumn.findOne({_id: idAlumn});
         if(alumn){
+            const alumnQualification = await Qualification.findOneAndDelete({idAlumn: idAlumn});
             const alumnReports = await Report.deleteMany({idAlumn: idAlumn});
             const alumnDeleted = await Alumn.findOneAndDelete({_id: idAlumn});
             return res.status(200).send({message: 'Alumn deleted successfully'})
