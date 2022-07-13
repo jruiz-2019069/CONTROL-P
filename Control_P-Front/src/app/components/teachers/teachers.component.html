@@ -1,0 +1,116 @@
+<app-nav-bar></app-nav-bar>
+<body style="background-color: #ffffff;">
+    <div class="container">
+        <div>
+            <button type="button" class="btnAdd mb-3" data-bs-toggle="modal" data-bs-target="#exampleModalCreateTeacher" ><svg xmlns="http://www.w3.org/2000/svg" width="20" height="50" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+                <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+              </svg>
+                Create Teacher
+            </button>
+        </div>
+        <div *ngFor="let teacher of arrayTeachers" class="card-media">
+          <!-- media container -->
+          <div class="card-media-object-container">
+            <div class="card-media-object" style="background-image: url(../../../assets/img/profesor.jpg);"></div>
+            <ul class="card-media-object-social-list">
+            </ul>
+          </div>
+          <!-- body container -->
+          <div class="card-media-body">
+            <div class="card-media-body-top">
+              <div class="card-media-body-top-icons u-float-right">
+              </div>
+            </div>
+            <div class="text">
+              <span class="card-media-body-heading">{{teacher.name}}</span>
+            </div>
+            <div class="card-media-body-supporting-bottom card-media-body-supporting-bottom-reveal">
+              <a class="card-media-body-supporting-bottom-text card-media-link u-float-right">
+                <button (click)="getTeacher(teacher._id)" *ngIf="this.role === 'ADMIN'" data-bs-toggle="modal" data-bs-target="#exampleModalDeleteTeacher" type="button" class="btn">Delete</button>
+              </a>
+              <a class="card-media-body-supporting-bottom-text card-media-link u-float-right">
+                <button (click)="getTeacher(teacher._id)" *ngIf="this.role === 'ADMIN'" data-bs-toggle="modal" data-bs-target="#exampleModalUpdateTeacher" type="button" class="btn">Update</button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+</body>
+
+<!--MODAL AGREGAR TEACHER-->
+
+<div class="modal fade" id="exampleModalCreateTeacher" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="container">
+            <div class="modal-content">
+                <div class="contact-box">
+                    <div class="left"></div>
+                    <div class="right">
+                        <div class="position-relative">
+                            <button type="button" class="btn-close position-absolute top-0 start-100 translate-middle" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <h2>Create Teacher</h2>
+                        <input [(ngModel)]="teacher.name" name="name" type="text" class="field" placeholder="Name">
+                        <input [(ngModel)]="teacher.email" name="email" type="email" class="field" placeholder="Email">
+                        <input [(ngModel)]="teacher.usernameTeacher" name="username" type="text" class="field" placeholder="User">
+                        <input [(ngModel)]="teacher.passwordTeacher" name="password" type="password" class="field" placeholder="Password">
+                        <div class="modal-footer">
+                            <button (click)="createTeacher()" class="btnModal" data-bs-dismiss="modal">Create</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <!--MODAL ACTUALIZAR TEACHER-->
+
+<div class="modal fade" id="exampleModalUpdateTeacher" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="container">
+          <div class="modal-content">
+              <div class="contact-box">
+                  <div class="left"></div>
+                  <div class="right">
+                      <div class="position-relative">
+                          <button type="button" class="btn-close position-absolute top-0 start-100 translate-middle" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <h2>Update Teacher</h2>
+                      <input [(ngModel)]="teacherUpdated.name" name="name" type="text" class="field" placeholder="Name">
+                      <input [(ngModel)]="teacherUpdated.email" name="email" type="email" class="field" placeholder="Email">
+                      <input [(ngModel)]="teacherUpdated.usernameTeacher" name="username" type="text" class="field" placeholder="User">
+                      <div class="modal-footer">
+                          <button (click)="updateTeacher()" class="btnModal" data-bs-dismiss="modal">Update</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- MODAL ELIMINAR -->
+<div class="modal fade" id="exampleModalDeleteTeacher" tabindex="-1" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="containerModal">
+        <div class="modal-content">
+            <div class="contact-box">
+                <div class="left"></div>
+                <div class="right">
+                    <div class="position-relative">
+                        <button type="button"
+                            class="btn-close position-absolute top-0 start-100 translate-middle"
+                            data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <h4>Are you sure you want to remove this supervisor?</h4>
+                    <button (click)="deleteTeacher()" class="btnModal mb-3" data-bs-dismiss="modal">Yes</button>
+                    <button  class="btnModal1" data-bs-dismiss="modal">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

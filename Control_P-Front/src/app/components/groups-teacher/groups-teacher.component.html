@@ -1,0 +1,31 @@
+<app-nav-bar></app-nav-bar>
+<body style="background-color: #ffffff;">
+    <div class="container">
+        <div *ngFor="let groupTeacher of arrayGroupsTeacher" class="card-media">
+          <!-- media container -->
+          <div class="card-media-object-container">
+            <div class="card-media-object" style="background-image: url(../../../assets/img/groups.jpg);"></div>
+            <ul class="card-media-object-social-list">
+            </ul>
+          </div>
+          <!-- body container -->
+          <div class="card-media-body">
+            <div class="card-media-body-top">
+              <div class="card-media-body-top-icons u-float-right">
+              </div>
+            </div>
+            <div class="text">
+              <span class="card-media-body-heading" style="font-size: 1.75rem;">{{groupTeacher.code}}</span>
+              <span class="card-media-body-heading">{{groupTeacher.career}} ({{groupTeacher.section}})</span>
+              <span class="card-media-body-heading">{{groupTeacher.time}}</span>
+              <span class="card-media-body-heading">Teacher: {{groupTeacher.idTeacher.name}}</span>
+            </div>
+            <div class="card-media-body-supporting-bottom card-media-body-supporting-bottom-reveal">
+              <a class="card-media-body-supporting-bottom-text card-media-link u-float-right">
+                <button [routerLink]="['/studentsByGroup/' + groupTeacher._id]" type="button" class="btn">Students</button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+</body>

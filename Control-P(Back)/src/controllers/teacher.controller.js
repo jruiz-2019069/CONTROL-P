@@ -6,7 +6,8 @@ const Report = require('../models/report.model');
 const Supervisor = require('../models/supervisor.model');
 const Group = require('../models/group.model');
 const Qualification = require('../models/qualification.model');
-const {dataObligatory} = require('../utils/validate');
+const {dataObligatory, encryptPassword} = require('../utils/validate');
+
 
 exports.testTeacherController = (req, res)=>{
     return res.send({message: 'The function test teacher controller is running'});
@@ -16,7 +17,7 @@ exports.testTeacherController = (req, res)=>{
 exports.getGroups = async(req, res)=>{
     try{
         const idTeacher = req.params.idTeacher;
-        const groupsFound = await Group.find({idTeacher: idTeacher});
+        const groupsFound = await Group.find({idTeacher: idTeacher}).populate('idTeacher');
         if(groupsFound.length != 0){
             return res.status(200).send({groupsFound});
         }else{
@@ -48,7 +49,7 @@ exports.getGroup = async(req, res)=>{
 exports.getAlumns = async(req, res)=>{
     try{
         const idGroup = req.params.idGroup;
-        const alumnsFound = await Alumn.find({idGroup: idGroup});
+        const alumnsFound = await Alumn.find({idGroup: idGroup}).populate('idGroup');
         if(alumnsFound.length != 0){
             return res.status(200).send({alumnsFound})  
         }else{

@@ -1,0 +1,107 @@
+<app-nav-bar></app-nav-bar>
+<body>
+
+
+    <div class="body">
+
+
+        <div class="container mt-5">
+
+            <table>
+
+                <tr>
+                    <td>
+                        <h5>Name:</h5>
+                    </td>
+                    <td>
+                        <input [(ngModel)]="student.name" name="name" type="text" class="text-field">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <h5>Carnet:</h5>
+                    </td>
+                    <td>
+                        <input [(ngModel)]="student.carnet" name="carnet" type="text" class="text-field">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <h5>Email:</h5>
+                    </td>
+                    <td>
+                        <input [(ngModel)]="student.email" name="email" type="email" class="text-field">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <h5>User:</h5>
+                    </td>
+                    <td>
+                        <input [(ngModel)]="student.usernameAlumn"name="username" type="text" class="text-field">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <h5>Password:</h5>
+                    </td>
+                    <td>
+                        <input [(ngModel)]="student.passwordAlumn" name="password" type="password" class="text-field">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <h5>Group:</h5>
+                    </td>
+                    <td>
+                        <select [(ngModel)]="this.idGroup" name="group" class="">
+                            <option disabled selected>Group</option>
+                          <option *ngFor="let group of arrayGroups" value="{{group._id}}">{{group.code}}</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <h5>Supervisor:</h5>
+                    </td>
+                    <td>
+                        <select [(ngModel)]="this.idSupervisor" name="supervisor" class="">
+                            <option disabled selected>Supervisor</option>
+                          <option *ngFor="let supervisor of arraySupervisors" value="{{supervisor._id}}">{{supervisor.name}} | {{supervisor.nameCompany}}</option>
+                        </select>
+                    </td>
+                </tr>
+                <br>
+                <tr>
+                    <td>
+                        <div class="options">
+                            <button routerLink="/groupsTeacher" type="button" class="btn btn-danger me-2">Cancelar</button>
+                        </div>
+                        
+                    </td>
+                    <td>
+                        <div class="options">
+                            <button routerLink="/groupsTeacher" (click)="createStudent()" type="button" class="btn btn-success ms-2">Agregar</button>
+                        </div>
+                    </td>
+                </tr>
+
+            </table>
+
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+</body>

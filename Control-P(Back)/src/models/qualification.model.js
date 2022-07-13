@@ -3,12 +3,12 @@
 const mongoose = require('mongoose');
 
 const qualificationSchema = mongoose.Schema({
-    creativity: Number,
-    leadership: Number,
-    autodidact: Number,
-    communication: Number,
-    initiative: Number,
-    teamwork: Number,
+    creativity: String,
+    leadership: String,
+    autodidact: String,
+    communication: String,
+    initiative: String,
+    teamwork: String,
     idAlumn: {type: mongoose.Schema.ObjectId, ref: 'Alumn'},
     idSupervisor: {type: mongoose.Schema.ObjectId, ref: 'Supervisor'}
 });

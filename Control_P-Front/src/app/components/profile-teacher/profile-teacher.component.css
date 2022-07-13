@@ -1,0 +1,173 @@
+.body_card{
+    
+	overflow-x: hidden;
+    
+}
+
+.contenedorImagen{
+    text-align: center;
+    font-size: 50px;
+    background-color: #457b9d;
+    border-radius: 30px;
+}
+
+.imagenPerfil{
+    width: 30%;
+}
+
+.container{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+}
+
+.container:after{
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	background-size: cover;
+	filter: blur(50px);
+	z-index: -1;
+}
+.contact-box{
+	max-width: 850px;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	background-color: #fff;
+	box-shadow: 0px 0px 19px 5px rgba(0,0,0,0.19);
+}
+
+.left{
+	background-size: cover;
+	height: 100%;
+}
+
+.right{
+	padding: 25px 40px;
+}
+
+h2{
+	position: relative;
+	padding: 0 0 10px;
+	margin-bottom: 10px;
+    color: #ffffff;
+}
+
+h2:after{
+	content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    height: 4px;
+    width: 60px;
+    border-radius: 2px;
+    background-color: #ffffff;
+}
+
+.field{
+	width: 100%;
+	border: 2px solid rgba(0, 0, 0, 0);
+	outline: none;
+	background-color: #f1faee;
+	padding: 0.5rem;
+	font-size: 1.1rem;
+	margin-bottom: 22px;
+	transition: .3s;
+    text-align: center;
+    width: 92%;
+    border-radius: 10px;
+}
+
+/*.field:hover{
+	background-color: #00000019;
+}*/
+
+textarea{
+	min-height: 150px;
+}
+
+.buttonModalNewUser{
+	width: 100%;
+    height: 3rem;
+	padding: 0.5rem 1rem;
+	background-color: #293f69;
+	color: #fff;
+	font-size: 1.1rem;
+	outline: none;
+	cursor: pointer;
+	transition: .3s;
+    border-radius: 10px;
+	border: none;
+}
+
+.buttonModalNewUser:hover{
+    background-color: #457b9d;
+    color: white;
+	border-style: inset;
+	border-color: #a8dadc;
+	border-right-style: inset;
+}
+
+.buttonModalNewUser:focus{
+    box-shadow: 0px 0px 10px #293f6958;
+}
+
+.field:focus{
+    border: 3px solid #496cad;
+    background-color: #f1faee;
+}
+
+@media screen and (max-width: 880px){
+	.contact-box{
+		grid-template-columns: 1fr;
+	}
+	.left{
+		height: 200px;
+	}
+}
+
+h4{
+	position: relative;
+	padding: 0 0 10px;
+	margin-bottom: 10px;
+}
+.card{
+   box-shadow: 0px 0px 50px #293f69ab;
+    background-color: #f1faee;
+    border-radius: 30px;
+    border: none;
+}
+
+.input_container{
+    background-color: #a8dadc;
+    border-radius: 10px;
+}
+.buttonPopover{
+	width: 100%;
+    height: 3rem;
+	padding: 0.5rem 1rem;
+	background-color: #E63946;
+	color: #fff;
+	font-size: 1.1rem;
+	outline: none;
+	cursor: pointer;
+	transition: .3s;
+    border-radius: 10px;
+	border: none;
+}
+
+.buttonPopover:hover{
+	background-color: #E63946;
+	border-style: inset;
+}

@@ -1,6 +1,7 @@
 'use strict'
 
 const Report = require('../models/report.model');
+const Group = require('../models/group.model')
 const Alumn = require('../models/alumn.model');
 const Qualification = require('../models/qualification.model');
 const moment = require('moment');
@@ -82,8 +83,9 @@ exports.getQualification = async(req, res)=>{
             return res.status(404).send({message: 'You dont have a qualification yet'});
         }
     }catch(err){
-
-    }console.log(err);
+        console.log(err);
+        return err;
+    }
 }
 
 //Función para ver el perfil de un alumno
@@ -105,9 +107,52 @@ exports.getProfile = async(req, res)=>{
 //Función para ver el grupo al que pertenece un alumno
 exports.getGroup = async(req, res)=>{
     try{
+        const idGroup = req.params.idGroup;
+        const groupFound = await Group.findOne({_id: idGroup}).populate('idTeacher');
+        if(groupFound){
+            return res.status(200).send({groupFound});
+        }else{
+            return res.status(404).send({message: 'This group no longer exists'}); 
+        }
+    }catch(err){
+        console.log(err);
+        return err;
+    }
+}
+
+
+exports.updateProfileAlumn = async(req, res)=>{
+    try{
         const idAlumn = req.params.idAlumn;
-        const groupFound = await Alumn.findOne({_id: idAlumn}).populate('idGroup');
-        return res.status(200).send({groupFound});
+        const params = req.body;
+        const data = {
+            name: params.name,
+            carnet: params.carnet,
+            email: params.email,
+            usernameAlumn: params.usernameAlumn
+        }
+        const msg = await dataObligatory(data);
+        if(msg){
+            return res.status(400).send(msg);
+        }else{
+            const alumn = await Alumn.findOne({_id: idAlumn});
+            if(alumn){
+                if(alumn.usernameAlumn != params.usernameAlumn){
+                    const alumnFound = await Alumn.findOne({usernameAlumn: params.usernameAlumn});
+                    if(alumnFound){
+                        return res.status(400).send({message: 'This alumn username already exist'});
+                    }else{
+                        const alumnUpdated = await Alumn.findOneAndUpdate({_id: idAlumn}, data, {new:true});
+                        return res.status(200).send({message: 'Profile updated successfully'});
+                    }
+                }else{
+                    const alumnUpdated = await Alumn.findOneAndUpdate({_id: idAlumn}, data, {new:true});
+                    return res.status(200).send({message: 'Profile updated successfully'});
+            }
+            }else{
+                return res.status(404).send({message: 'This alumn no longer exists'}); 
+            }
+        }
     }catch(err){
         console.log(err);
         return err;

@@ -1,0 +1,54 @@
+<body>
+    <nav class="navbar sticky-top container-fluid navbar-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand ms-3" href="#"
+          style="color: #F0FAEE; font-family: 'Lato', sans-serif; font-weight: 500; font-size: 25px;">Control-P</a>
+        <button class="navbar-toggler me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+          aria-controls="offcanvasNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+          <div class="encabezado">
+            <h4>{{this.name}}</h4>
+            <hr>
+            <h5>{{this.role}}</h5>
+            <hr>
+          </div>
+          <div class="cuerpo">
+            <button routerLink="/supervisor" *ngIf="this.role === 'ADMIN'" class="custom-btn btn-7"> <img id="supervisor" src="../../../assets/img/supervisor.png" alt="icono de grupo">
+              Supervisors</button>
+            <button routerLink="/group" *ngIf="this.role === 'ADMIN'"class="custom-btn btn-7"> <img id="grupo" src="../../../assets/img/grupo.png" alt="icono de grupo">
+              Groups</button>
+            <button routerLink="/groupsTeacher" *ngIf="this.role === 'TEACHER'"class="custom-btn btn-7"> <img id="grupo" src="../../../assets/img/grupo.png" alt="icono de grupo">
+              Groups</button>
+            <button routerLink="/teacher" *ngIf="this.role === 'ADMIN'" class="custom-btn btn-7"> <img id="profesor" src="../../../assets/img/profesor.png" alt="icono de grupo">
+              Teachers</button>
+            <button routerLink="/student"  *ngIf="this.role === 'ALUMN'" class="custom-btn btn-7"> <img id="reporte" src="../../../assets/img/reporte.png" alt="icono de grupo">
+              Reports</button>
+            <button routerLink="/gradesGraphic" *ngIf="this.role === 'ALUMN'" class="custom-btn btn-7"> <img id="calificacion" src="../../../assets/img/calificacion.png" alt="icono de perfil">
+              Qualification</button>
+            <button routerLink="/students" *ngIf="this.role === 'ADMIN'" class="custom-btn btn-7"> <img id="alumn" src="../../../assets/img/usuario.png" alt="icono de perfil">
+              Students</button>
+            <button routerLink="/practitioners" *ngIf="this.role === 'SUPERVISOR'" class="custom-btn btn-7"> <img id="alumn" src="../../../assets/img/usuario.png" alt="icono de perfil">
+              Students</button>
+            <button routerLink="/createStudent" *ngIf="this.role === 'TEACHER'" class="custom-btn btn-7"> <img id="agregar" src="../../../assets/img/agregar.png" alt="icono de agregar">
+                 Add student</button>
+            <button routerLink="/profileSupervisor" *ngIf="this.role === 'SUPERVISOR' "class="custom-btn btn-7"> <img id="perfil" src="../../../assets/img/perfil.png" alt="icono de perfil">
+              Profile</button>
+            <button routerLink="/profileStudent" *ngIf="this.role === 'ALUMN' "class="custom-btn btn-7"> <img id="perfil" src="../../../assets/img/perfil.png" alt="icono de perfil">
+              Profile</button>
+            <button routerLink="/profileTeacher" *ngIf="this.role === 'TEACHER' "class="custom-btn btn-7"> <img id="perfil" src="../../../assets/img/perfil.png" alt="icono de perfil">
+              Profile</button>
+            <button routerLink="/groupStudent" *ngIf="this.role === 'ALUMN'" class="custom-btn btn-7"> <img id="grupo" src="../../../assets/img/grupo.png" alt="icono de perfil">
+              Group</button>
+          </div>
+          <div class="pie">
+            <hr class="no-space">
+            <button (click)="closeSession()" class="custom-btn btn-7"> <img id="cerrar" src="../../../assets/img/cerrar.png" alt="icono de cerrar"> Log
+              out</button>
+            <hr class="no-space">
+          </div>
+        </div>
+      </div>
+    </nav>
+  </body>

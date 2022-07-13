@@ -1,0 +1,34 @@
+<app-nav-bar></app-nav-bar>
+<body style="background-color: #ffffff;">
+    <div class="container">
+        <div *ngFor="let student of arrayStudentsByTeacher" class="card-media">
+          <!-- media container -->
+          <div class="card-media-object-container">
+            <div class="card-media-object" style="background-image: url(../../../assets/img/groups.jpg);"></div>
+            <ul class="card-media-object-social-list">
+            </ul>
+          </div>
+          <!-- body container -->
+          <div class="card-media-body">
+            <div class="card-media-body-top">
+              <div class="card-media-body-top-icons u-float-right">
+              </div>
+            </div>
+            <div class="text">
+              <span class="card-media-body-heading" style="font-size: 1.75rem;">{{student.name}}</span>
+              <span class="card-media-body-heading">{{student.carnet}}</span>
+              <span class="card-media-body-heading">{{student.idGroup.code}} | {{student.idGroup.career}}</span>
+              <span class="card-media-body-heading">Hours Done: {{student.hoursDone}}</span>
+            </div>
+            <div class="card-media-body-supporting-bottom card-media-body-supporting-bottom-reveal">
+              <a class="card-media-body-supporting-bottom-text card-media-link u-float-right">
+                <button [routerLink]="['/gradesGraphic', student._id]" type="button" class="btn">Grades</button>
+              </a>
+              <a class="card-media-body-supporting-bottom-text card-media-link u-float-right">
+                <button [routerLink]="['/reportsStudent/' + student._id]" type="button" class="btn">Reports</button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+</body>

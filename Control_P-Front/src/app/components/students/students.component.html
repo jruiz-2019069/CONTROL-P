@@ -1,0 +1,148 @@
+<app-nav-bar></app-nav-bar>
+<body style="background-color: #ffffff;">
+    <div class="container">
+        <div>
+            <button type="button" class="btnAdd mb-3" data-bs-toggle="modal" data-bs-target="#exampleModalCreateStudent" ><svg xmlns="http://www.w3.org/2000/svg" width="20" height="50" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+                <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+              </svg>
+                Create Student
+            </button>
+        </div>
+        <div *ngFor="let student of arrayStudents" class="card-media">
+          <!-- media container -->
+          <div  class="card-media-object-container">
+            <div class="card-media-object" style="background-image: url(../../../assets/img/students.jpg);"></div>
+            <ul class="card-media-object-social-list">
+            </ul>
+          </div>
+          <!-- body container -->
+          <div class="card-media-body">
+            <div class="card-media-body-top">
+              <div class="card-media-body-top-icons u-float-right">
+              </div>
+            </div>
+            <div class="text">
+              <span class="card-media-body-heading" style="font-size: 1.75rem;">{{student.name}}</span>
+              <span class="card-media-body-heading">{{student.carnet}}</span>
+              <span class="card-media-body-heading">{{student.idGroup.code}}</span>
+              <span class="card-media-body-heading">{{student.idGroup.career}}</span>
+            </div>
+            <div class="card-media-body-supporting-bottom card-media-body-supporting-bottom-reveal">
+              <a class="card-media-body-supporting-bottom-text card-media-link u-float-right">
+                <button (click)="getStudent(student._id)" *ngIf="this.role === 'ADMIN'" data-bs-toggle="modal" data-bs-target="#exampleModalDeleteStudent" type="button" class="btn">Delete</button>
+              </a>
+              <a class="card-media-body-supporting-bottom-text card-media-link u-float-right">
+                <button (click)="getStudent(student._id)" *ngIf="this.role === 'ADMIN'" data-bs-toggle="modal" data-bs-target="#exampleModalUpdateStudent" type="button" class="btn">Update</button>
+              </a>
+              <a class="card-media-body-supporting-bottom-text card-media-link u-float-right">
+                <button *ngIf="this.role === 'TEACHER'" type="button" class="btn">Reports</button>
+              </a>
+              <a class="card-media-body-supporting-bottom-text card-media-link u-float-right">
+                <button *ngIf="this.role === 'TEACHER'" type="button" class="btn">Ratings</button>
+              </a>
+              <a class="card-media-body-supporting-bottom-text card-media-link u-float-right">
+                <button *ngIf="this.role === 'TEACHER'" type="button" class="btn">Profile</button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+</body>
+
+<!--MODAL AGREGAR ESTUDIANTE-->
+
+<div class="modal fade" id="exampleModalCreateStudent" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="container">
+          <div class="modal-content">
+              <div class="contact-box">
+                  <div class="left"></div>
+                  <div class="right">
+                      <div class="position-relative">
+                          <button type="button" class="btn-close position-absolute top-0 start-100 translate-middle" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <h2>Create Student</h2>
+                      <input [(ngModel)]="student.name"  name="name" type="text" class="field" placeholder="Name">
+                      <input [(ngModel)]="student.carnet" name="carnet" type="text" class="field" placeholder="Carnet">
+                      <input [(ngModel)]="student.email" name="email" type="email" class="field" placeholder="Email">
+                      <input [(ngModel)]="student.usernameAlumn" name="username" type="text" class="field" placeholder="Username">
+                      <input [(ngModel)]="student.passwordAlumn" name="password" type="password" class="field" placeholder="Password">
+                      <div>
+                        <span class="infoSelect">Group</span>
+                        <select [(ngModel)]="this.idGroup" name="group" class="form-select field" aria-label="Default select example">
+                          <option disabled selected>Group</option>
+                          <option *ngFor="let group of arrayGroups" value="{{group._id}}">{{group.code}}</option>
+                        </select>
+                      </div>
+                      <div>
+                        <span class="infoSelect">Supervisor</span>
+                        <select [(ngModel)]="this.idSupervisor" name="group" class="form-select field" aria-label="Default select example">
+                          <option disabled selected>Supervisor</option>
+                          <option *ngFor="let supervisor of arraySupervisors" value="{{supervisor._id}}">{{supervisor.name}} | {{supervisor.nameCompany}}</option>
+                        </select>
+                      </div>
+                      <div class="modal-footer">
+                          <button (click)="createStudent()" class="btnModal" data-bs-dismiss="modal">Create</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!--MODAL ACTUALIZAR GRUPO-->
+
+<div class="modal fade" id="exampleModalUpdateStudent" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="container">
+          <div class="modal-content">
+              <div class="contact-box">
+                  <div class="left"></div>
+                  <div class="right">
+                      <div class="position-relative">
+                          <button type="button" class="btn-close position-absolute top-0 start-100 translate-middle" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <h2>Update Student</h2>
+                      <input [(ngModel)]="this.studentUpdated.name"  name="name" type="text" class="field" placeholder="Name">
+                      <input [(ngModel)]="this.studentUpdated.carnet" name="carnet" type="text" class="field" placeholder="Carnet">
+                      <input [(ngModel)]="this.studentUpdated.email" name="email" type="email" class="field" placeholder="Email">
+                      <input [(ngModel)]="this.studentUpdated.usernameAlumn" name="username" type="text" class="field" placeholder="Username">
+                      <div>
+                        <span class="infoSelect">Hours Done</span>
+                        <input [(ngModel)]="this.studentUpdated.hoursDone" name="hoursDone" type="text" class="field" placeholder="Hours Done">
+                      </div>
+                      <div class="modal-footer">
+                          <button (click)="updateStudent()" class="btnModal" data-bs-dismiss="modal">Update</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- MODAL ELIMINAR -->
+<div class="modal fade" id="exampleModalDeleteStudent" tabindex="-1" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="containerModal">
+        <div class="modal-content">
+            <div class="contact-box">
+                <div class="left"></div>
+                <div class="right">
+                    <div class="position-relative">
+                        <button type="button"
+                            class="btn-close position-absolute top-0 start-100 translate-middle"
+                            data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <h4>Are you sure you want to remove this student?</h4>
+                    <button (click)="deleteStudent()" class="btnModal mb-3" data-bs-dismiss="modal">Yes</button>
+                    <button  class="btnModal1" data-bs-dismiss="modal">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

@@ -14,9 +14,25 @@ exports.testSupervisorController = (req, res)=>{
 exports.getAlumns = async(req, res)=>{
     try{
         const idSupervisor = req.params.idSupervisor;
-        const alumnsFound = await Alumn.find({idSupervisor: idSupervisor});
+        const alumnsFound = await Alumn.find({idSupervisor: idSupervisor}).populate('idGroup');
         if(alumnsFound.length != 0){
             return res.status(200).send({alumnsFound});
+        }else{
+            return res.status(404).send({message: 'There are no alumns'});
+        }
+    }catch(err){
+        console.log(err);
+        return err;
+    }
+}
+
+//Función para ver un practicante de un supervisor
+exports.getAlumn = async(req, res)=>{
+    try{
+        const idAlumn = req.params.idAlumn;
+        const alumnFound = await Alumn.findOne({_id: idAlumn});
+        if(alumnFound.length != 0){
+            return res.status(200).send({alumnFound});
         }else{
             return res.status(404).send({message: 'There are no alumns'});
         }
@@ -65,7 +81,7 @@ exports.createQualification = async(req, res)=>{
 exports.getReportsAlumn = async(req, res)=>{
     try{
         const idAlumn = req.params.idAlumn;
-        const reportsFound = await Report.find({idAlumn: idAlumn});
+        const reportsFound = await Report.find({idAlumn: idAlumn}).populate('idAlumn');
         if(reportsFound.length != 0){
             return res.status(200).send({reportsFound});
         }else{
@@ -102,6 +118,45 @@ exports.getProfile = async(req, res)=>{
             return res.status(200).send({supervisorFound});
         }else{
             return res.status(404).send({message: 'Your profile no longer exists'}); 
+        }
+    }catch(err){
+        console.log(err);
+        return err;
+    }
+}
+
+//Función para editar un supervisor
+exports.updateProfileSupervisor = async(req, res)=>{
+    try{
+        const idSupervisor = req.params.idSupervisor;
+        const params = req.body;
+        const data = {
+            name: params.name,
+            nameCompany: params.nameCompany,
+            email: params.email,
+            usernameSupervisor: params.usernameSupervisor,
+        }
+        const msg = await dataObligatory(data);
+        if(msg){
+            return res.status(400).send(msg);
+        }else{
+            const supervisor = await Supervisor.findOne({_id: idSupervisor});
+            if(supervisor){
+                if(supervisor.usernameSupervisor != params.usernameSupervisor){
+                    const supervisorFound = await Supervisor.findOne({usernameSupervisor: params.usernameSupervisor});
+                    if(supervisorFound){
+                        return res.status(400).send({message: 'This supervisor username already exist'});
+                    }else{
+                        const supervisorUpdated = await Supervisor.findOneAndUpdate({_id: idSupervisor}, data, {new:true});
+                        return res.status(200).send({message: 'Profile updated successfully'});
+                    }
+                }else{
+                    const supervisorUpdated = await Supervisor.findOneAndUpdate({_id: idSupervisor}, data, {new:true});
+                    return res.status(200).send({message: 'Profile updated successfully'});
+                }
+            }else{
+                return res.status(404).send({message: 'This supervisor no longer exists'}); 
+            }
         }
     }catch(err){
         console.log(err);

@@ -344,7 +344,7 @@ exports.createGroup = async(req, res)=>{
         if(msg){
             return res.status(400).send(msg);
         }else{
-            let groupFound = await Group.findOne({code: data.code});
+            let groupFound = await Group.findOne({code: data.code, section:data.section});
             if(groupFound){
                 return res.status(400).send({message: 'This group already exist'});
             }else{
@@ -362,7 +362,7 @@ exports.createGroup = async(req, res)=>{
 //Función para ver todos los grupos
 exports.getGroups = async(req, res)=>{
     try{
-        const groupsFound = await Group.find();
+        const groupsFound = await Group.find().populate('idTeacher');
         if(groupsFound.length != 0){
             return res.status(200).send({groupsFound});
         }else{
@@ -394,6 +394,7 @@ exports.getGroup = async(req, res)=>{
 exports.updateGroup = async(req, res)=>{
     try{
         const idGroup = req.params.idGroup;
+        const idTeacher = req.params.idTeacher
         const params = req.body;
         const data = {
             code: params.code.toUpperCase(),
@@ -491,7 +492,7 @@ exports.createAlumn = async(req, res)=>{
 //Función para ver todos los alumnos
 exports.getAlumns = async(req, res)=>{
     try{
-        const alumnsFound = await Alumn.find();
+        const alumnsFound = await Alumn.find().populate('idGroup');
         if(alumnsFound.length != 0){
           return res.status(200).send({alumnsFound})  
         }else{

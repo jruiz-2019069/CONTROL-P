@@ -1,0 +1,172 @@
+<app-nav-bar></app-nav-bar>
+<body>
+    <div class="container">
+        <div *ngFor="let student of arrayStudents" class="card-media">
+          <!-- media container -->
+          <div class="card-media-object-container">
+            <div class="card-media-object" style="background-image: url(../../../assets/img/students.jpg);"></div>
+            <ul class="card-media-object-social-list">
+            </ul>
+          </div>
+          <!-- body container -->
+          <div class="card-media-body">
+            <div class="card-media-body-top">
+              <div class="card-media-body-top-icons u-float-right">
+              </div>
+            </div>
+            <div class="text">
+              <span class="card-media-body-heading" style="font-size: 1.75rem;">{{student.name}}</span>
+              <span class="card-media-body-heading">{{student.carnet}}</span>
+              <span class="card-media-body-heading">{{student.idGroup.code}}</span>
+            </div>
+            <div class="card-media-body-supporting-bottom card-media-body-supporting-bottom-reveal">
+              <a class="card-media-body-supporting-bottom-text card-media-link u-float-right">
+                <button [routerLink]="['/reportsStudent/' + student._id]" type="button" class="btn">
+                  Reports
+                </button>
+              </a>
+              <a class="card-media-body-supporting-bottom-text card-media-link u-float-right">
+                <button (click)="getStudent(student._id)" data-bs-toggle="modal" data-bs-target="#exampleModalAddQualification" type="button" class="btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard2-plus-fill" viewBox="0 0 16 16">
+                    <path d="M10 .5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5.5.5 0 0 1-.5.5.5.5 0 0 0-.5.5V2a.5.5 0 0 0 .5.5h5A.5.5 0 0 0 11 2v-.5a.5.5 0 0 0-.5-.5.5.5 0 0 1-.5-.5Z"/>
+                    <path d="M4.085 1H3.5A1.5 1.5 0 0 0 2 2.5v12A1.5 1.5 0 0 0 3.5 16h9a1.5 1.5 0 0 0 1.5-1.5v-12A1.5 1.5 0 0 0 12.5 1h-.585c.055.156.085.325.085.5V2a1.5 1.5 0 0 1-1.5 1.5h-5A1.5 1.5 0 0 1 4 2v-.5c0-.175.03-.344.085-.5ZM8.5 6.5V8H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V9H6a.5.5 0 0 1 0-1h1.5V6.5a.5.5 0 0 1 1 0Z"/>
+                  </svg>  Add Qualification
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+</body>
+
+<!--MODAL AGREGAR NOTA-->
+
+<div class="modal fade" id="exampleModalAddQualification" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="container">
+          <div class="modal-content">
+              <div class="contact-box">
+                  <div class="left"></div>
+                  <div class="right">
+                      <div class="position-relative">
+                          <button type="button" class="btn-close position-absolute top-0 start-100 translate-middle" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <h2 class="h2Modal">Add Qualification</h2>
+                      <div>
+                        <span class="infoSelect">Creativity (0-10)</span>
+                        <input [(ngModel)]="this.qualification.creativity" name="creativity" type="range" min="0" max="10" list="creativity" class="field">
+                      </div>
+                      <div>
+                        <span class="infoSelect">Leadership (0-10)</span>
+                        <input [(ngModel)]="this.qualification.leadership" name="leadership" type="range" min="0" max="10" list="leadership" class="field">
+                      </div>
+                      <div>
+                        <span class="infoSelect">Autodidact (0-10)</span>
+                        <input [(ngModel)]="this.qualification.autodidact" name="autodidact" type="range" min="0" max="10" list="autodidact" class="field">                      </div>
+                      <div>
+                        <span class="infoSelect">Communication (0-10)</span>
+                        <input [(ngModel)]="this.qualification.communication" name="communication" type="range" min="0" max="10" list="communication" class="field">
+                      </div>
+                      <div>
+                        <span class="infoSelect">Initiative (0-10)</span>
+                        <input [(ngModel)]="this.qualification.initiative" name="initiative" type="range" min="0" max="10" list="initiative" class="field">
+                      </div>
+                      <div>
+                        <span class="infoSelect">Teamwork (0-10)</span>
+                        <input [(ngModel)]="this.qualification.teamwork" name="teamwork" type="range" min="0" max="10" list="teamwork" class="field">
+                      </div>
+
+                      <datalist id="creativity">
+                        <option value="0">
+                        <option value="1">
+                        <option value="2">
+                        <option value="3">
+                        <option value="4">
+                        <option value="5">
+                        <option value="6">
+                        <option value="7">
+                        <option value="8">
+                        <option value="9">
+                        <option value="10">
+                      </datalist>
+
+                      <datalist id="leadership">
+                        <option value="0">
+                        <option value="1">
+                        <option value="2">
+                        <option value="3">
+                        <option value="4">
+                        <option value="5">
+                        <option value="6">
+                        <option value="7">
+                        <option value="8">
+                        <option value="9">
+                        <option value="10">
+                      </datalist>
+                      
+                      <datalist id="autodidact">
+                        <option value="0">
+                        <option value="1">
+                        <option value="2">
+                        <option value="3">
+                        <option value="4">
+                        <option value="5">
+                        <option value="6">
+                        <option value="7">
+                        <option value="8">
+                        <option value="9">
+                        <option value="10">
+                      </datalist>
+
+                      <datalist id="communication">
+                        <option value="0">
+                        <option value="1">
+                        <option value="2">
+                        <option value="3">
+                        <option value="4">
+                        <option value="5">
+                        <option value="6">
+                        <option value="7">
+                        <option value="8">
+                        <option value="9">
+                        <option value="10">
+                      </datalist>
+
+                      <datalist id="initiative">
+                        <option value="0">
+                        <option value="1">
+                        <option value="2">
+                        <option value="3">
+                        <option value="4">
+                        <option value="5">
+                        <option value="6">
+                        <option value="7">
+                        <option value="8">
+                        <option value="9">
+                        <option value="10">
+                      </datalist>
+
+                      <datalist id="teamwork">
+                        <option value="0">
+                        <option value="1">
+                        <option value="2">
+                        <option value="3">
+                        <option value="4">
+                        <option value="5">
+                        <option value="6">
+                        <option value="7">
+                        <option value="8">
+                        <option value="9">
+                        <option value="10">
+                      </datalist>
+
+                      
+                      <div class="modal-footer">
+                          <button (click)="createQualification()" class="btnModal" data-bs-dismiss="modal">Add</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
