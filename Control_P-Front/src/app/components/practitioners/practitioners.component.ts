@@ -15,6 +15,7 @@ export class PractitionersComponent implements OnInit {
   idAlumn:any;
   idSupervisor:any;
   arrayStudents:any =[];
+  search:string = "";
   
   qualification:QualificationModel;
 

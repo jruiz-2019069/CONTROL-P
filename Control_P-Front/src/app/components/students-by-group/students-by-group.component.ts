@@ -14,6 +14,7 @@ export class StudentsByGroupComponent implements OnInit {
   idGroup:any;
   idTeacher:any;
   role:any;
+  search:string =""
 
   arrayStudentsByTeacher:any =[];
 

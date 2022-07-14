@@ -16,6 +16,7 @@ export class GroupComponent implements OnInit {
   arrayTeachers: any=[];
 
   idTeacher:any;
+  search:string = "";
 
   group: GroupModel;
 

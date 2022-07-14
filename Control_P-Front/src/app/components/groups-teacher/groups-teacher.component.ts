@@ -13,6 +13,7 @@ export class GroupsTeacherComponent implements OnInit {
 
   idTeacher:any;
   arrayGroupsTeacher:any=[];
+  search:string = "";
 
   constructor(
     public navBarRest: NavBarLoginRestService,

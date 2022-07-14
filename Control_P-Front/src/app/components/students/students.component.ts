@@ -19,6 +19,7 @@ export class StudentsComponent implements OnInit {
 
   idGroup:any;
   idSupervisor:any;
+  search: string="";
 
   studentUpdated = {
     _id:"",

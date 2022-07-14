@@ -15,6 +15,7 @@ export class TeachersComponent implements OnInit {
   role:any;
   arrayTeachers:any = []
   teacher: TeacherModel;
+  search:string="";
 
   teacherUpdated = {
     _id: "",

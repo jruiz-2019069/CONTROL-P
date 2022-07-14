@@ -9,6 +9,30 @@ html {
   *, *:before, *:after {
     box-sizing: inherit;
   }
+
+  /*body{
+    position: absolute; 
+    left: 0px;
+    width: 100vw; 
+    height:auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    overflow-x: hidden;
+  }
+
+  /*body::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0, 0.3);
+  }*/
   
   .container {
     margin: 50px auto 0;
@@ -383,4 +407,53 @@ textarea{
     display: flex;
     align-items: flex-start;
 	font-size: 0.75rem;
+}
+
+/*
+  PIPE
+*/
+
+.field:focus{
+  border: 2px solid rgba(30,85,250,0.47);
+  background-color: #fff;
+}
+
+.confButton{
+  border: 2px solid #457b9d;
+  padding: 0.5rem;
+}
+
+.spanSearch{
+  background-color: #457b9d;
+  border-color: #457b9d;
+}
+
+.img-spanSeach{
+  height: 1.75rem;
+}
+
+.spanInfo{
+  color: #000000;
+  display: flex;
+  align-items: flex-start;
+  font-size: 1rem;
+}
+
+.imagen{
+position: relative;
+right: 3;
+top: 0;
+width: 8rem;
+}
+
+.cuadro{
+background-color: #c9cccc;
+border-radius: 20px;
+padding: 0.5rem;
+}
+
+.cuadro:hover{
+background-color: #a4aaaa;
+border-radius: 20px;
+padding: 0.5rem;
 }

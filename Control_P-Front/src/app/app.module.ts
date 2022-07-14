@@ -25,6 +25,11 @@ import { ProfileSupervisorComponent } from './components/profile-supervisor/prof
 import { ProfileTeacherComponent } from './components/profile-teacher/profile-teacher.component';
 import { ChartsModule } from '@rinminase/ng-charts';
 import { GradesGraphicComponent } from './components/grades-graphic/grades-graphic.component';
+import { SearchGroupPipe } from './pipes/search-group.pipe';
+import { SearchStudentsByTeacherPipe } from './pipes/search-students-by-teacher.pipe';
+import { SearchPractitionerPipe } from './pipes/search-practitioner.pipe';
+import { SearchSupervisorPipe } from './pipes/search-supervisor.pipe';
+import { SearchTeacherPipe } from './pipes/search-teacher.pipe';
 
 @NgModule({
   declarations: [
@@ -47,6 +52,11 @@ import { GradesGraphicComponent } from './components/grades-graphic/grades-graph
     ProfileSupervisorComponent,
     ProfileTeacherComponent,
     GradesGraphicComponent,
+    SearchGroupPipe,
+    SearchStudentsByTeacherPipe,
+    SearchPractitionerPipe,
+    SearchSupervisorPipe,
+    SearchTeacherPipe,
   ],
   imports: [
     BrowserModule,

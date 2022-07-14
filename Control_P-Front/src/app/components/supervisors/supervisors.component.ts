@@ -14,6 +14,7 @@ export class SupervisorsComponent implements OnInit {
 
   arraySupervisors: any = [];
   supervisor: SupervisorModel;
+  search:string ="";
 
   supervisorUpdated = {
     _id:"",

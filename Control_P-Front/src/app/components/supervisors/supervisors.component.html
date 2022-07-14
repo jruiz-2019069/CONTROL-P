@@ -1,6 +1,10 @@
 <app-nav-bar></app-nav-bar>
 <body style="background-color: #ffffff;"> <!--CAMBIAR EL COLOR DEL FONDO POR EL VERDECITO :*-->
     <div class="container">
+      <div class="input-group mt-3 mb-3">
+        <input [(ngModel)]="this.search" name="filter" type="text" class="form-control confButton" placeholder="Name" aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <span class="spanSearch input-group-text"><img class="img-spanSeach" src="../../../assets/img/lupa.png" alt="lupa"></span>
+      </div>
         <div>
             <button type="button" class="btnAdd mb-3" data-bs-toggle="modal" data-bs-target="#exampleModalCreateSupervisor" ><svg xmlns="http://www.w3.org/2000/svg" width="20" height="50" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
                 <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
@@ -9,7 +13,7 @@
                 Create Supervisor
             </button>
         </div>
-        <div *ngFor="let supervisor of arraySupervisors" class="card-media">
+        <div *ngFor="let supervisor of arraySupervisors | searchSupervisor:search" class="card-media">
           <!-- media container -->
           <div class="card-media-object-container">
             <div class="card-media-object" style="background-image: url(../../../assets/img/supervisor.jpg);"></div>
