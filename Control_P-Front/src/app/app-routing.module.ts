@@ -6,6 +6,7 @@ import { GroupStudentComponent } from './components/group-student/group-student.
 import { GroupComponent } from './components/group/group.component';
 import { GroupsTeacherComponent } from './components/groups-teacher/groups-teacher.component';
 import { HomeComponent } from './components/home/home.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PractitionersComponent } from './components/practitioners/practitioners.component';
 import { ProfileStudentComponent } from './components/profile-student/profile-student.component';
 import { ProfileSupervisorComponent } from './components/profile-supervisor/profile-supervisor.component';
@@ -43,7 +44,8 @@ const routes: Routes = [
   //COMPARTIDAS
   {path:'reportsStudent/:idAlumn', component:ReportsStudentComponent},
   {path:'gradesGraphic/:idAlumn', component:GradesGraphicComponent},
-  {path:'gradesGraphic', component:GradesGraphicComponent}
+  {path:'gradesGraphic', component:GradesGraphicComponent},
+  {path:'**', component:NotFoundComponent}
 ];
 
 @NgModule({

@@ -30,6 +30,7 @@ import { SearchStudentsByTeacherPipe } from './pipes/search-students-by-teacher.
 import { SearchPractitionerPipe } from './pipes/search-practitioner.pipe';
 import { SearchSupervisorPipe } from './pipes/search-supervisor.pipe';
 import { SearchTeacherPipe } from './pipes/search-teacher.pipe';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { SearchTeacherPipe } from './pipes/search-teacher.pipe';
     SearchPractitionerPipe,
     SearchSupervisorPipe,
     SearchTeacherPipe,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
