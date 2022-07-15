@@ -1,3 +1,26 @@
+.body {
+    
+	background-color: #ffffff;
+	background-size: cover;
+	background-attachment: fixed;
+	font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .fondo{
+	position: absolute; 
+	left: 0px;
+	width: 100vw; 
+	height:100vh;
+	background-image: linear-gradient(rgba(216, 216, 216, 0.5), rgba(255, 255, 255, 0.2)), url('../../../assets/img/login.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	justify-content: center;
+	align-items: center;
+	overflow: auto;
+	overflow-x: hidden;
+  }
+
 .body_card{
     
 	overflow-x: hidden;

@@ -2,6 +2,8 @@
     background: #E63946;
     text-align: center;
     height: 95px;
+    position: sticky;
+    top: 0;
 }
 
 #offcanvasNavbar {
