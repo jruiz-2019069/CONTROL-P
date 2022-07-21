@@ -81,7 +81,7 @@
     border-radius: 10px;
     border: none;
     height: 3rem;
-    width: 10%;
+    width: auto;
   }
   
   .btnAdd:hover{
@@ -90,7 +90,7 @@
     border-radius: 10px;
     border: none;
     height: 3rem;
-    width: 10%;
+    width: auto;
     transition: 0.35s;
   }
 

@@ -13,33 +13,35 @@ export class StudentRestServiceService {
     "Authorization": this.navBarRest.getToken()
   });
 
+  httpOption = new HttpHeaders().set("Content-Type", "application/json");
+
   constructor(
     public navBarRest: NavBarLoginRestService,
     private http: HttpClient
   ) { }
 
   getReports(idAlumn:any){
-    return this.http.get(environment.baseUrl + "alumn/getReports/" + idAlumn, {headers:this.htppOptions});
+    return this.http.get(environment.baseUrl + "alumn/getReports/" + idAlumn, {headers: this.httpOption.set("Authorization",this.navBarRest.getToken())});
   }
 
   createReport(idAlumn:any, params:{}){
-    return this.http.post(environment.baseUrl + "alumn/createReport/" + idAlumn, params, {headers:this.htppOptions});
+    return this.http.post(environment.baseUrl + "alumn/createReport/" + idAlumn, params, {headers: this.httpOption.set("Authorization",this.navBarRest.getToken())});
   }
 
   getGroup(idGroup:any){
-    return this.http.get(environment.baseUrl + "alumn/getGroup/" + idGroup, {headers:this.htppOptions});
+    return this.http.get(environment.baseUrl + "alumn/getGroup/" + idGroup, {headers: this.httpOption.set("Authorization",this.navBarRest.getToken())});
   }
 
   getProfile(idAlumn:any){
-    return this.http.get(environment.baseUrl + "alumn/getProfile/" + idAlumn, {headers:this.htppOptions});
+    return this.http.get(environment.baseUrl + "alumn/getProfile/" + idAlumn, {headers: this.httpOption.set("Authorization",this.navBarRest.getToken())});
   }
 
   updateProfile(idAlumn:any, params:{}){
-    return this.http.put(environment.baseUrl + "alumn/updateProfileAlumn/" + idAlumn, params, {headers:this.htppOptions});
+    return this.http.put(environment.baseUrl + "alumn/updateProfileAlumn/" + idAlumn, params, {headers: this.httpOption.set("Authorization",this.navBarRest.getToken())});
   }
 
   getGrades(idAlumn:any){
-    return this.http.get(environment.baseUrl + "alumn/getQualification/" + idAlumn, {headers:this.htppOptions});
+    return this.http.get(environment.baseUrl + "alumn/getQualification/" + idAlumn, {headers: this.httpOption.set("Authorization",this.navBarRest.getToken())});
   }
 
 }

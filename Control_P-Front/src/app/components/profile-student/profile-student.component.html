@@ -23,8 +23,9 @@
                             <div class="input_container mb-3">
                                 <input [(ngModel)]="this.student.usernameAlumn" name="username" type="text" class="field mt-3 ms-3 me-3" placeholder="Username">
                             </div>
-                            <div class="input_container mb-3">
-                                <input  type="text" class="field mt-3 ms-3 me-3" disabled placeholder="Hours Done: {{this.student.hoursDone}}">
+                            <div class="input_container mb-3 text-center">
+                                <span class="">Hours Done</span>
+                                <input  [(ngModel)]="this.student.hoursDone" type="text" class="field mt-3 ms-3 me-3"  placeholder="Hours Done: {{this.student.hoursDone}}">
                             </div>
                             <button (click)="updateProfileAlumn()" class="buttonModalNewUser">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">

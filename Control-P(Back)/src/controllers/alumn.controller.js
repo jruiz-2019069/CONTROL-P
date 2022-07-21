@@ -129,7 +129,8 @@ exports.updateProfileAlumn = async(req, res)=>{
             name: params.name,
             carnet: params.carnet,
             email: params.email,
-            usernameAlumn: params.usernameAlumn
+            usernameAlumn: params.usernameAlumn,
+            hoursDone: params.hoursDone
         }
         const msg = await dataObligatory(data);
         if(msg){
