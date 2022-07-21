@@ -129,4 +129,8 @@ export class SupervisorsComponent implements OnInit {
     })
   }
 
+  resetForm(addSupervisorForm:any){
+    addSupervisorForm.reset();
+  }
+
 }

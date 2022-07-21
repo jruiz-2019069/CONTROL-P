@@ -54,17 +54,19 @@
                   <div class="left"></div>
                   <div class="right">
                       <div class="position-relative">
-                          <button type="button" class="btn-close position-absolute top-0 start-100 translate-middle" data-bs-dismiss="modal" aria-label="Close"></button>
+                          <button (click)="resetForm(addSupervisorForm)" type="button" class="btn-close position-absolute top-0 start-100 translate-middle" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <h2>Create Supervisor</h2>
-                      <input [(ngModel)]="supervisor.name" type="text" class="field" placeholder="Name">
-                      <input [(ngModel)]="supervisor.nameCompany" type="text" class="field" placeholder="Name Company">
-                      <input [(ngModel)]="supervisor.email" type="email" class="field" placeholder="Email">
-                      <input [(ngModel)]="supervisor.usernameSupervisor" type="text" class="field" placeholder="User">
-                      <input [(ngModel)]="supervisor.passwordSupervisor" type="password" class="field" placeholder="Password">
-                      <div class="modal-footer">
-                          <button (click)="createSupervisor()" class="btnModal" data-bs-dismiss="modal">Create</button>
-                      </div>
+                      <form #addSupervisorForm>
+                        <input [(ngModel)]="supervisor.name" name="name" type="text" class="field" placeholder="Name">
+                        <input [(ngModel)]="supervisor.nameCompany" name="company" type="text" class="field" placeholder="Name Company">
+                        <input [(ngModel)]="supervisor.email" name="email" type="email" class="field" placeholder="Email">
+                        <input [(ngModel)]="supervisor.usernameSupervisor" name="user" type="text" class="field" placeholder="User">
+                        <input [(ngModel)]="supervisor.passwordSupervisor" name="password" type="password" class="field" placeholder="Password">
+                        <div class="modal-footer">
+                            <button (click)="createSupervisor()" class="btnModal" data-bs-dismiss="modal">Create</button>
+                        </div>
+                    </form>
                   </div>
               </div>
           </div>

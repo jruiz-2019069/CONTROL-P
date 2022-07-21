@@ -3,7 +3,7 @@
 const mongoose = require("mongoose");
 
 exports.init = () => {
-    const uriMongo = "mongodb://127.0.0.1:27017/DBControl-P";
+    const uriMongo = "mongodb+srv://jRuiz:123@control-p.jwvftcw.mongodb.net/?retryWrites=true&w=majority";
 
     mongoose.Promise = global.Promise;
 
